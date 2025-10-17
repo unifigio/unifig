@@ -1,0 +1,119 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: unifig-tool-mappings
+  namespace: unifig-system
+claude-code:
+  - filePath: .claude/commands/*.md
+    type: commands
+    unifigPath: commands/*.md
+    purpose: MCP server configurations
+  - filePath: .claude/commands/*.md
+    type: commands
+    unifigPath: commands/*.md
+    purpose: MCP server configurations
+  - filePath: .claude/settings.json
+    type: settings
+    unifigPath: settings.json
+    purpose: Project-specific settings and overrides
+  - filePath: .claude/agents/*.md
+    type: agents
+    unifigPath: agents/*.md
+    purpose: Project-specific custom agents
+  - filePath: .mcp.json
+    type: mcp settings
+    unifigPath: .mcp.json
+    purpose: MCP server configurations
+
+opencode:
+  - filePath: opencode.json
+    type: settings
+    unifigPath: settings.json
+    purpose: Project-specific configuration overrides
+  - filePath: .opencode/agent/*.md
+    type: agents
+    unifigPath: agents/*.md
+    purpose: Project-specific custom agents
+  - filePath: .opencode/command/*.md
+    type: commands
+    unifigPath: commands/*.md
+    purpose: Project-specific custom commands
+
+github-copilot:
+  - filePath: .github/copilot-instructions.md
+    type: system instructions
+    unifigPath: AGENTS.md
+    purpose: Repository-wide custom instructions
+  - filePath: .github/instructions/*.instructions.md
+    type: agents
+    unifigPath: agents/*.md
+    purpose: Path-specific custom instructions
+  - filePath: AGENTS.md
+    type: agents
+    unifigPath: AGENTS.md
+    purpose: AI agent instructions (any directory)
+  - filePath: CLAUDE.md
+    type: agents
+    unifigPath: AGENTS.md
+    purpose: Claude-compatible agent instructions
+  - filePath: GEMINI.md
+    type: agents
+    unifigPath: AGENTS.md
+    purpose: Gemini-compatible agent instructions
+
+crush-cli:
+  - filePath: .crush.json
+    type: settings
+    unifigPath: settings.json
+    purpose: Project-specific configuration
+  - filePath: crush.json
+    type: settings
+    unifigPath: settings.json
+    purpose: Alternative project config filename
+  - filePath: .crushignore
+    type: settings
+    unifigPath: .unifigignore
+    purpose: Files to exclude from context
+
+cursor:
+  - filePath: .cursorrules
+    type: system instructions
+    unifigPath: AGENTS.md
+    purpose: AI rules and coding instructions for the project
+  - filePath: .cursor/rules/*.md
+    type: agents
+    unifigPath: agents/*.md
+    purpose: Multiple repository-level rules (Agent auto-selects)
+  - filePath: .cursor/rules/*.mdc
+    type: agents
+    unifigPath: agents/*.md
+    purpose: Cursor markdown files with metadata (YAML frontmatter)
+  - filePath: .cursor/mcp.json
+    type: mcp settings
+    unifigPath: .mcp.json
+    purpose: Project-specific MCP server configurations
+  - filePath: .cursorignore
+    type: settings
+    unifigPath: .unifigignore
+    purpose: Files to exclude from codebase indexing
+gemini-cli:
+  - filePath: .gemini.json
+    type: settings
+    unifigPath: settings.json
+    purpose: Project-specific configuration
+  - filePath: gemini.json
+    type: settings
+    unifigPath: settings.json
+    purpose: Alternative project config filename
+  - filePath: .geminiignore
+    type: settings
+    unifigPath: .unifigignore
+    purpose: Files to exclude from context
+  - filePath: .gemini/agents/*.md
+    type: agents
+    unifigPath: agents/*.md
+    purpose: Project-specific custom agents
+  - filePath: .gemini/commands/*.md
+    type: commands
+    unifigPath: commands/*.md
+    purpose: Project-specific custom commands
