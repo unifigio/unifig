@@ -18,22 +18,30 @@ Using `.unifig` directory and the files under it, the unifig CLI tool can help y
 Unifig automatically scans your project for `.unifig/*` files and generates agent configurations in the same directory, respecting `.gitignore` rules.
 
 # Install unifig
+```bash
+bun install -g @unifigio/cli
+```
+
+# Or run directly
+```bash
+bunx @unifigio/cli <command>
+```
 
 # Scan and automatically create configuration files
 ```bash
 # Scan the current directory and nested directories and create configuration files for all supported agents
-bunx unifig apply --nested --agent all
+unifig apply --nested --agent all
 # Scan the current directory and nested directories and create configuration files for Claude Code and GitHub Copilot only
-bunx unifig apply --nested --agent claude,copilot
+unifig apply --nested --agent claude,copilot
 
 # Scan only the current directory and create configuration files for all supported agents
-bunx unifig apply --agent all
+unifig apply --agent all
 # Scan only the current directory and create configuration files for OpenCode and Cursor only
-bunx unifig apply --agent opencode,cursor
+unifig apply --agent opencode,cursor
 ```
 
 # Initialize unifig in your project
 ```bash
 # Initialize unifig in the current directory
-bunx unifig init
+unifig init
 ```
