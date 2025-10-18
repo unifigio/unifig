@@ -1,0 +1,2 @@
+#!/usr/bin/env bash 
+bun publish --access public 

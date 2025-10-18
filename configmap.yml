@@ -4,116 +4,162 @@ metadata:
   name: unifig-tool-mappings
   namespace: unifig-system
 claude-code:
-  - filePath: .claude/commands/*.md
+  - unifigPath: AGENTS.md
+    filePath: CLAUDE.md
+    type: rules
+    purpose: Claude-compatible agent instructions
+  - unifigPath: commands/*.md
+    filePath: .claude/commands/*.md
     type: commands
-    unifigPath: commands/*.md
     purpose: MCP server configurations
-  - filePath: .claude/commands/*.md
-    type: commands
-    unifigPath: commands/*.md
-    purpose: MCP server configurations
-  - filePath: .claude/settings.json
+  - unifigPath: settings.json
+    filePath: .claude/settings.json
     type: settings
-    unifigPath: settings.json
     purpose: Project-specific settings and overrides
-  - filePath: .claude/agents/*.md
+  - unifigPath: agents/*.md
+    filePath: .claude/agents/*.md
     type: agents
-    unifigPath: agents/*.md
     purpose: Project-specific custom agents
-  - filePath: .mcp.json
+  - unifigPath: .mcp.json
+    filePath: .mcp.json
     type: mcp settings
-    unifigPath: .mcp.json
     purpose: MCP server configurations
 
 opencode:
-  - filePath: opencode.json
+  - unifigPath: settings.json
+    filePath: opencode.json
     type: settings
-    unifigPath: settings.json
     purpose: Project-specific configuration overrides
-  - filePath: .opencode/agent/*.md
+  - unifigPath: agents/*.md
+    filePath: .opencode/agent/*.md
     type: agents
-    unifigPath: agents/*.md
     purpose: Project-specific custom agents
-  - filePath: .opencode/command/*.md
+  - unifigPath: commands/*.md
+    filePath: .opencode/command/*.md
     type: commands
-    unifigPath: commands/*.md
     purpose: Project-specific custom commands
 
 github-copilot:
-  - filePath: .github/copilot-instructions.md
+  - unifigPath: AGENTS.md
+    filePath: .github/copilot-instructions.md
     type: system instructions
-    unifigPath: AGENTS.md
     purpose: Repository-wide custom instructions
-  - filePath: .github/instructions/*.instructions.md
+  - unifigPath: agents/*.md
+    filePath: .github/instructions/*.instructions.md
     type: agents
-    unifigPath: agents/*.md
     purpose: Path-specific custom instructions
-  - filePath: AGENTS.md
+  - unifigPath: AGENTS.md
+    filePath: AGENTS.md
     type: agents
-    unifigPath: AGENTS.md
     purpose: AI agent instructions (any directory)
-  - filePath: CLAUDE.md
+  - unifigPath: AGENTS.md
+    filePath: CLAUDE.md
     type: agents
-    unifigPath: AGENTS.md
     purpose: Claude-compatible agent instructions
-  - filePath: GEMINI.md
+  - unifigPath: AGENTS.md
+    filePath: GEMINI.md
     type: agents
-    unifigPath: AGENTS.md
     purpose: Gemini-compatible agent instructions
 
 crush-cli:
-  - filePath: .crush.json
+  - unifigPath: settings.json
+    filePath: .crush.json
     type: settings
-    unifigPath: settings.json
     purpose: Project-specific configuration
-  - filePath: crush.json
+  - unifigPath: settings.json
+    filePath: crush.json
     type: settings
-    unifigPath: settings.json
     purpose: Alternative project config filename
-  - filePath: .crushignore
+  - unifigPath: .unifigignore
+    filePath: .crushignore
     type: settings
-    unifigPath: .unifigignore
     purpose: Files to exclude from context
 
 cursor:
-  - filePath: .cursorrules
+  - unifigPath: AGENTS.md
+    filePath: .cursorrules
     type: system instructions
-    unifigPath: AGENTS.md
     purpose: AI rules and coding instructions for the project
-  - filePath: .cursor/rules/*.md
+  - unifigPath: agents/*.md
+    filePath: .cursor/rules/*.md
     type: agents
-    unifigPath: agents/*.md
     purpose: Multiple repository-level rules (Agent auto-selects)
-  - filePath: .cursor/rules/*.mdc
+  - unifigPath: agents/*.md
+    filePath: .cursor/rules/*.mdc
     type: agents
-    unifigPath: agents/*.md
     purpose: Cursor markdown files with metadata (YAML frontmatter)
-  - filePath: .cursor/mcp.json
+  - unifigPath: .mcp.json
+    filePath: .cursor/mcp.json
     type: mcp settings
-    unifigPath: .mcp.json
     purpose: Project-specific MCP server configurations
-  - filePath: .cursorignore
+  - unifigPath: .unifigignore
+    filePath: .cursorignore
     type: settings
-    unifigPath: .unifigignore
     purpose: Files to exclude from codebase indexing
 gemini-cli:
-  - filePath: .gemini.json
-    type: settings
-    unifigPath: settings.json
+  - unifigPath: AGENTS.md
+    filePath: GEMINI.md
+    type: rules
     purpose: Project-specific configuration
-  - filePath: gemini.json
+  - unifigPath: settings.json
+    filePath: .gemini.json
     type: settings
-    unifigPath: settings.json
+    purpose: Project-specific configuration
+  - unifigPath: settings.json
+    filePath: gemini.json
+    type: settings
     purpose: Alternative project config filename
-  - filePath: .geminiignore
+  - unifigPath: .unifigignore
+    filePath: .geminiignore
     type: settings
-    unifigPath: .unifigignore
     purpose: Files to exclude from context
-  - filePath: .gemini/agents/*.md
+  - unifigPath: agents/*.md
+    filePath: .gemini/agents/*.md
     type: agents
-    unifigPath: agents/*.md
     purpose: Project-specific custom agents
-  - filePath: .gemini/commands/*.md
+  - unifigPath: commands/*.md
+    filePath: .gemini/commands/*.md
     type: commands
-    unifigPath: commands/*.md
+    purpose: Project-specific custom commands
+
+openai-codex:
+  - unifigPath: settings.json
+    filePath: .codex.json
+    type: settings
+    purpose: Project-specific configuration
+  - unifigPath: .unifigignore
+    filePath: .codexignore
+    type: settings
+    purpose: Files to exclude from context
+  - unifigPath: agents/*.md
+    filePath: .codex/agents/*.md
+    type: agents
+    purpose: Project-specific custom agents
+
+continue-dev:
+  - unifigPath: settings.json
+    filePath: .continue/config.json
+    type: settings
+    purpose: Project-specific configuration
+  - unifigPath: agents/*.md
+    filePath: .continue/rules/*.md
+    type: agents
+    purpose: Project-specific rules
+  - unifigPath: commands/*.md
+    filePath: .continue/commands/*.md
+    type: commands
+    purpose: Project-specific custom commands
+
+cline-cli:
+  - unifigPath: settings.json
+    filePath: .cline.json
+    type: settings
+    purpose: Project-specific configuration
+  - unifigPath: agents/*.md
+    filePath: .cline/agents/*.md
+    type: agents
+    purpose: Project-specific custom agents
+  - unifigPath: commands/*.md
+    filePath: .cline/commands/*.md
+    type: commands
     purpose: Project-specific custom commands

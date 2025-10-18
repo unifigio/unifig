@@ -45,3 +45,11 @@ unifig apply --agent opencode,cursor
 # Initialize unifig in the current directory
 unifig init
 ```
+
+# Clean `.unifig` directories in your project
+```bash
+# Clean all `.unifig` directories in the current directory and nested directories
+unifig clean --nested
+# Clean the `.unifig` directory in the current directory only
+unifig clean
+```

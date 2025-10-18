@@ -10,6 +10,7 @@ pnpm-debug.log*
 dist/
 build/
 out/
+bin/
 *.js
 *.js.map
 *.d.ts
@@ -82,3 +83,6 @@ bun.lockb
 tmp/
 temp/
 *.tmp
+
+# Agentic stuff
+.claude/
