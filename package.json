@@ -1,6 +1,6 @@
 {
   "name": "@unifigio/cli",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Unified configuration file management platform for AI-assisted coding environments",
   "module": "index.ts",
   "type": "module",

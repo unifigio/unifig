@@ -4,7 +4,7 @@ metadata:
   name: unifig-tool-mappings
   namespace: unifig-system
 claude-code:
-  - unifigPath: AGENTS.md
+  - unifigPath: INSTRUCTIONS.md
     filePath: CLAUDE.md
     type: rules
     purpose: Claude-compatible agent instructions
@@ -40,7 +40,7 @@ opencode:
     purpose: Project-specific custom commands
 
 github-copilot:
-  - unifigPath: AGENTS.md
+  - unifigPath: INSTRUCTIONS.md
     filePath: .github/copilot-instructions.md
     type: system instructions
     purpose: Repository-wide custom instructions
@@ -48,15 +48,15 @@ github-copilot:
     filePath: .github/instructions/*.instructions.md
     type: agents
     purpose: Path-specific custom instructions
-  - unifigPath: AGENTS.md
+  - unifigPath: INSTRUCTIONS.md
     filePath: AGENTS.md
     type: agents
     purpose: AI agent instructions (any directory)
-  - unifigPath: AGENTS.md
+  - unifigPath: INSTRUCTIONS.md
     filePath: CLAUDE.md
     type: agents
     purpose: Claude-compatible agent instructions
-  - unifigPath: AGENTS.md
+  - unifigPath: INSTRUCTIONS.md
     filePath: GEMINI.md
     type: agents
     purpose: Gemini-compatible agent instructions
@@ -76,18 +76,18 @@ crush-cli:
     purpose: Files to exclude from context
 
 cursor:
-  - unifigPath: AGENTS.md
+  - unifigPath: INSTRUCTIONS.md
     filePath: .cursorrules
     type: system instructions
     purpose: AI rules and coding instructions for the project
   - unifigPath: agents/*.md
-    filePath: .cursor/rules/*.md
-    type: agents
-    purpose: Multiple repository-level rules (Agent auto-selects)
-  - unifigPath: agents/*.md
-    filePath: .cursor/rules/*.mdc
-    type: agents
-    purpose: Cursor markdown files with metadata (YAML frontmatter)
+    filePath: .cursor/commands/agents/*.md
+    type: settings
+    purpose: Project-specific configuration
+  - unifigPath: commands/*.md
+    filePath: .cursor/commands/*.md
+    type: settings
+    purpose: Project-specific configuration
   - unifigPath: .mcp.json
     filePath: .cursor/mcp.json
     type: mcp settings
@@ -97,7 +97,7 @@ cursor:
     type: settings
     purpose: Files to exclude from codebase indexing
 gemini-cli:
-  - unifigPath: AGENTS.md
+  - unifigPath: INSTRUCTIONS.md
     filePath: GEMINI.md
     type: rules
     purpose: Project-specific configuration

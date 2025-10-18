@@ -260,6 +260,70 @@ instructions: |
 }
 `;
 
+  const instructions = `# unifig Configuration Guide
+
+## Overview
+This \`.unifig\` directory contains configuration files for Claude Code and other AI coding assistants.
+
+## Directory Structure
+
+- **commands/** - Custom slash commands for Claude Code
+  - Commands defined here can be used with \`/command-name\` in Claude Code
+  - Format: Markdown files with command definitions
+
+- **agents/** - Agent-specific configurations
+  - Customize behavior and settings for different AI assistants
+  - Format: Markdown files with agent configurations
+
+- **settings.json** - Project-wide settings
+  - General configuration for the unifig setup
+
+## Quick Start
+
+1. **Add your first command:**
+   \`\`\`bash
+   cp commands/example.md commands/my-command.md
+   \`\`\`
+
+2. **Add your first agent config:**
+   \`\`\`bash
+   cp agents/example.md agents/my-agent.md
+   \`\`\`
+
+3. **Apply configurations:**
+   \`\`\`bash
+   unifig apply --agent claude,copilot
+   # or for all supported agents:
+   unifig apply --agent all
+   \`\`\`
+
+4. **Scan nested directories:**
+   \`\`\`bash
+   unifig apply --nested --agent all
+   \`\`\`
+
+## Available Commands
+
+- \`unifig init\` - Initialize a new .unifig directory
+- \`unifig apply --agent <name> [--nested]\` - Apply configurations to agents
+- \`unifig clean [--nested]\` - Remove generated configurations
+
+## Supported Agents
+
+- claude (Claude Code)
+- copilot (GitHub Copilot)
+- cursor (Cursor)
+- opencode (OpenCode)
+- gemini (Gemini CLI)
+- cline (Cline CLI)
+- continue (Continue Dev)
+- crush (Crush CLI)
+
+## For More Information
+
+Visit the unifig documentation for detailed configuration examples and advanced usage.
+`;
+
   writeFileSync(
     join(unifigDir, "commands", "example.md"),
     exampleCommand
@@ -272,16 +336,24 @@ instructions: |
     join(unifigDir, "settings.json"),
     exampleSettings
   );
+  writeFileSync(
+    join(unifigDir, "instructions.md"),
+    instructions
+  );
 
   console.log(`✓ Initialized .unifig directory at ${unifigDir}`);
   console.log(`  - Created commands/ directory`);
   console.log(`  - Created agents/ directory`);
   console.log(`  - Created example files`);
+  console.log(`  - Created instructions.md`);
   console.log(`\nNext steps:`);
   console.log(
-    `  1. Add your configuration files to .unifig/commands/ and .unifig/agents/`
+    `  1. Read instructions.md for detailed configuration guide`
   );
-  console.log(`  2. Run: unifig apply --nested --agent all`);
+  console.log(
+    `  2. Add your configuration files to .unifig/commands/ and .unifig/agents/`
+  );
+  console.log(`  3. Run: unifig apply --agent claude,copilot`);
 }
 
 // Clean .unifig directories
