@@ -19,7 +19,7 @@ export const importPathsPlugin: Plugin = {
 
     // Update import statements
     processed = processed.replace(
-      /from ['"](@?\w+\/[\w\-\/]+)['"]/g,
+      /from ['"](@?[\w\-\/]+)['"]/g,
       (match, importPath) => {
         if (importPath.startsWith(oldPackageName)) {
           return match.replace(oldPackageName, newPackageName);
@@ -30,7 +30,7 @@ export const importPathsPlugin: Plugin = {
 
     // Update require statements
     processed = processed.replace(
-      /require\(['"](@?\w+\/[\w\-\/]+)['"]\)/g,
+      /require\(['"](@?[\w\-\/]+)['"]\)/g,
       (match, importPath) => {
         if (importPath.startsWith(oldPackageName)) {
           return match.replace(oldPackageName, newPackageName);

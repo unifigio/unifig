@@ -19,6 +19,9 @@ export async function runMerge(options: unifigOptions): Promise<void> {
     envInjectorPlugin,
   ];
 
+  // Collect variables from environment
+  const variables: Record<string, any> = { ...process.env };
+
   const logger = new Logger(options.verbose);
 
   if (options.dryRun) {
@@ -41,7 +44,7 @@ export async function runMerge(options: unifigOptions): Promise<void> {
     }
 
     // Apply transformations
-    const result = await applyTransformations(file, plugins, options);
+    const result = await applyTransformations(file, plugins, options, variables);
 
     if (result) {
       await fileWriter.writeFile(result);
@@ -59,7 +62,8 @@ export async function runMerge(options: unifigOptions): Promise<void> {
 async function applyTransformations(
   file: FileInfo,
   plugins: any[],
-  options: unifigOptions
+  options: unifigOptions,
+  variables: Record<string, any>
 ): Promise<TransformResult | null> {
   let currentContent: string | Buffer | null = file.content || null;
   let currentDestination = file.path;
@@ -74,7 +78,11 @@ async function applyTransformations(
   }
 
   for (const plugin of plugins) {
-    if (!GlobMatcher.matches(file.path, plugin.match)) {
+    const matches = GlobMatcher.matches(file.path, plugin.match);
+    if (options.verbose) {
+      console.log(`[DEBUG] Checking plugin ${plugin.name} for ${file.path}: ${matches}`);
+    }
+    if (!matches) {
       continue;
     }
 
@@ -83,7 +91,7 @@ async function applyTransformations(
       destinationPath: currentDestination,
       fileStats: file.stats,
       options,
-      variables: {},
+      variables,
       metadata,
     };
 

@@ -42,9 +42,7 @@ export class FileWriter {
     }
 
     // Create directories if needed
-    if (this.options.createDirs) {
-      await this.ensureDirectory(dirname(destinationPath));
-    }
+    await this.ensureDirectory(dirname(destinationPath));
 
     // Write the file
     await writeFile(destinationPath, result.content, {

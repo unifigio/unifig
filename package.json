@@ -8,7 +8,8 @@
     "minimatch": "^9.0.0"
   },
   "scripts": {
-    "build": "bun build src/index.ts --compile --outfile unifig"
+    "build": "bun build src/index.ts --compile --outfile bin/unifig",
+    "test": "bun test test/"
   },
   "peerDependencies": {
     "typescript": "^5"

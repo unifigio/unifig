@@ -1,0 +1,3 @@
+Project: {{PROJECT_NAME:MyDefaultProject}}
+Version: {{VERSION:1.0.0}}
+Author: {{AUTHOR:Unknown}}

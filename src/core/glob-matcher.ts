@@ -12,15 +12,25 @@ export class GlobMatcher {
       return true;
     }
 
-    // Check if file matches any of the patterns
-    return patterns.some(pattern => {
-      // Handle negation patterns
-      if (pattern.startsWith('!')) {
-        return !minimatch(file.path, pattern.slice(1));
-      }
+    let hasPositiveMatch = false;
+    let hasNegativeMatch = false;
 
-      return minimatch(file.path, pattern);
-    });
+    for (const pattern of patterns) {
+      if (pattern.startsWith('!')) {
+        // Negative pattern
+        if (minimatch(file.path, pattern.slice(1))) {
+          hasNegativeMatch = true;
+        }
+      } else {
+        // Positive pattern
+        if (minimatch(file.path, pattern)) {
+          hasPositiveMatch = true;
+        }
+      }
+    }
+
+    // Include if there's a positive match and no negative match
+    return hasPositiveMatch && !hasNegativeMatch;
   }
 
   // Static method for simple pattern matching

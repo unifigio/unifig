@@ -95,6 +95,11 @@ export function parseArgs(args: string[]): ParsedArgs {
           break;
         }
 
+        // Check for unknown options
+        if (arg && arg.startsWith('-')) {
+          throw new Error(`Unknown argument: ${arg}`);
+        }
+
         // Positional arguments
         if (parsed.command === 'create-plugin') {
           if (!parsed.createPlugin) {
@@ -107,8 +112,8 @@ export function parseArgs(args: string[]): ParsedArgs {
         } else if (!parsed.options.destination) {
           parsed.options.destination = arg;
         } else {
-          // Unknown argument
-          throw new Error(`Unknown argument: ${arg}`);
+          // Too many positional arguments
+          throw new Error('Too many arguments');
         }
         break;
     }
