@@ -9,8 +9,8 @@ unifig is a unified configuration file management platform designed for AI-assis
 - OpenAI Codex - `codex`
 - Gemini CLI - `gemini`
 - GitHub Copilot - `copilot`
-- Cursor - `cursor`
 - Crush CLI - `crush`
+- Cursor - `cursor`
 - Continue.dev - `continue`
 - Cline CLI - `cline`
 
