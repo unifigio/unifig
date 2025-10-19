@@ -16,7 +16,7 @@ Build a CLI tool using Bun runtime (with `--compile` for bundled executables) th
 - **Plugin Types**: 
   - Core plugins (bundled)
   - Local plugins (`~/.unifig/plugins/`)
-  - NPM plugins (`@unifig/plugin-*` or `unifig-plugin-*`)
+  - NPM plugins (`@unifigio/plugin-*` or `unifig-plugin-*`)
 - **Plugin API**: Transformers that accept file content and return `{ destination: string, content: string | null }`
 - **Capabilities**: Async transforms, file skipping (return null), file renaming, multiple output files from single input
 - **Execution**: Run in Bun Worker threads for isolation and security
