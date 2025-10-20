@@ -66,10 +66,12 @@ export function parseArgs(args: string[]): ParsedArgs {
 
       case '--plugin':
         if (i + 1 < args.length) {
-          const plugin = args[i + 1];
-          if (plugin) {
+          const pluginArg = args[i + 1];
+          if (pluginArg) {
             if (!parsed.options.plugins) parsed.options.plugins = [];
-            parsed.options.plugins.push(plugin);
+            // Support both comma-separated and multiple --plugin flags
+            const plugins = pluginArg.split(',').map(p => p.trim()).filter(p => p);
+            parsed.options.plugins.push(...plugins);
           }
           i++;
         }
@@ -157,7 +159,7 @@ COMMANDS:
 
 OPTIONS:
   -p, --pattern <pattern>          Glob pattern for file selection
-  --plugin <plugin>                Plugin to use for transformation
+  --plugin <plugin>                Plugin(s) to use for transformation (comma-separated)
   -d, --dry-run                    Preview changes without writing files
   -f, --force                      Overwrite existing files
   -i, --interactive                Interactive conflict resolution
@@ -168,7 +170,8 @@ OPTIONS:
 EXAMPLES:
   unifig ./template ./my-project
   unifig https://github.com/user/template ./my-project --pattern "src/**/*.ts"
-  unifig ./source ./dest --plugin template-variables --dry-run
+  unifig ./source ./dest --plugin template-variables,import-paths --dry-run
+  unifig ./source ./dest --plugin "template-variables, env-injector, import-paths"
   unifig ./source ./dest --interactive --force
 `);
 }
